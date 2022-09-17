@@ -1,0 +1,39 @@
+﻿<Window x:Class="TZ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:TZ"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="820">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+    </Window.Resources>
+    <Window.DataContext>
+        <local:ApplicationViewModel/>
+    </Window.DataContext>
+    <Grid Margin="0,0,0,-4">
+        <DataGrid Name="DataGrid" ItemsSource="{Binding Persons}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedPerson}" LoadingRow="MyDataGrid_LoadingRow" Margin="10,10,479,59" RenderTransformOrigin="0.5,0.5">
+
+            <DataGrid.Columns >
+
+                <DataGridTextColumn IsReadOnly="True" Header="ФИО" Binding="{Binding Path=User, UpdateSourceTrigger=PropertyChanged}" Width="120" />
+                <DataGridTextColumn IsReadOnly="True" Header="Среднее" Binding="{Binding Path=StepsAverage, UpdateSourceTrigger=PropertyChanged}" Width="70" />
+                <DataGridTextColumn IsReadOnly="True" Header="Лучший" Binding="{Binding Path=StepsBest, UpdateSourceTrigger=PropertyChanged}" Width="70" />
+                <DataGridTextColumn IsReadOnly="True" Header="Худший" Binding="{Binding Path=StepsWorst, UpdateSourceTrigger=PropertyChanged}" Width="70" />
+            </DataGrid.Columns>
+        </DataGrid >
+        <oxy:PlotView Model="{Binding MyModel}" Margin="344,10,10,10"/>
+        <Button Content="OpenFIle" Name="BtnOpenFile"  Click="BtnOpenFile_Click"  HorizontalAlignment="Left" Margin="10,513,0,0" VerticalAlignment="Top" Width="166" Height="43" Command="{Binding CommandProcFileBtn}">
+
+        </Button>
+        <Button Content="Save select User" x:Name="BtnSaveData" FontSize="10" Click="BtnSaveData_Click" HorizontalAlignment="Left" Margin="181,513,0,0" VerticalAlignment="Top" Width="143" Height="43" Command="{Binding CommandSaveDataBtn}"/>
+    </Grid>
+</Window>
