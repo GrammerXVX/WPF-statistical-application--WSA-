@@ -6,6 +6,7 @@ This project is designed to read the statistics of the steps taken and analyze t
 Features of this application.
 
 *The "TestData" folder contains test data.
+
 Possibility to download data and read them. Displaying statistics for each of the users and color highlighting those whose number of steps of the maximum or minimum value differs by 20% from their average.
 
 It also saves statistics for the selected user.
