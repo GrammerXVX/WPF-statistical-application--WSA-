@@ -10,3 +10,9 @@ Features of this application.
 Possibility to download data and read them. Displaying statistics for each of the users and color highlighting those whose number of steps of the maximum or minimum value differs by 20% from their average.
 
 It also saves statistics for the selected user.
+
+
+Used nuget packages
+newtonsoft.json
+OxyPlot.Wpf (OxyPlot.Core, OxyPlot.Wpf.Shared, OxyPlot.Wpf)
+ServiceStack.Text
