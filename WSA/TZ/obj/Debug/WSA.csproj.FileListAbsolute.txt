@@ -35,3 +35,4 @@ C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\obj\Deb
 C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\obj\Debug\WSA.Properties.Resources.resources
 C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\obj\Debug\WSA.exe
 C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\obj\Debug\WSA.pdb
+C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\obj\Debug\WSA.csproj.AssemblyReference.cache
