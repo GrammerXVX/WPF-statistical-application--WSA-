@@ -13,6 +13,9 @@ It also saves statistics for the selected user.
 
 
 Used nuget packages
+
 1)newtonsoft.json
+
 2)OxyPlot.Wpf (OxyPlot.Core, OxyPlot.Wpf.Shared, OxyPlot.Wpf)
+
 3)ServiceStack.Text
