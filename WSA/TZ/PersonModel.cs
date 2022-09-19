@@ -1,12 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 
 namespace WSA
 {
-    public class PersonModel 
+    public class PersonModel
     {
         public ObservableCollection<Person> PersonsData { get; private set; }
         private List<ObservableCollection<Person>> PersonsOnDay { get; set; }
@@ -15,14 +13,11 @@ namespace WSA
             PersonsData = new ObservableCollection<Person>();
             if (PersonOnDay != null)
             {
-
                 this.PersonsOnDay = PersonOnDay;
-
-                GetData();
+                PersonsData = PersonOnDay[0];
             }
             else
                 this.PersonsOnDay = new List<ObservableCollection<Person>>();
-            
         }
 
         public ObservableCollection<Person> HandlingData()
@@ -40,7 +35,7 @@ namespace WSA
                             {
                                 if (p2.StepsAverage != 0)
                                 {
-                                    PersonsData[i] =  p2;
+                                    PersonsData[i] = p2;
                                     return PersonsData;
                                 }
                                 else
@@ -60,14 +55,13 @@ namespace WSA
         }
         private void SortDataAndRanking()
         {
-            Person temp;
-            for (int i = 0; i < PersonsData.Count- 1; i++)
+            for (int i = 0; i < PersonsData.Count - 1; ++i)
             {
-                for (int j = i + 1; j < PersonsData.Count; j++)
+                for (int j = i + 1; j < PersonsData.Count; ++j)
                 {
                     if (PersonsData[i].StepsAverage < PersonsData[j].StepsAverage)
                     {
-                        temp = PersonsData[i];
+                        Person temp = PersonsData[i];
                         PersonsData[i] = PersonsData[j];
                         PersonsData[j] = temp;
                     }
@@ -78,7 +72,10 @@ namespace WSA
                 PersonsData[i].Rank = i + 1;
             }
         }
-        private void GetData()=>
-            PersonsData = JsonConvert.DeserializeObject<ObservableCollection<Person>>(File.ReadAllText(@"Data\\day30.json"));
+        //private void GetData()
+        //{
+        //    PersonsData = JsonConvert.DeserializeObject<ObservableCollection<Person>>(File.ReadAllText(@"C:\Users\artem\Desktop\MyWorkTZ\WPF-statistical-application--WSA-\WSA\TZ\TestData\\day30.json"));
+        //}
+
     }
 }

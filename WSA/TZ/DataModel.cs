@@ -1,6 +1,7 @@
 ﻿using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System;
 
 namespace WSA
 {
@@ -16,12 +17,15 @@ namespace WSA
             MyModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Title = "Day", Minimum = 1 });
             MyModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Steps" });
         }
+
         public PlotModel DataViewModel(Person p)
         {
+            if(p is null)
+                throw new Exception("Person was null");
             MyModel.Series.Clear();
             MyModel.ResetAllAxes();
             ProcessFunction = new FunctionSeries();
-            for (int x = 1; x < p.DaySteps.Count+1; x++)
+            for (int x = 1; x < p.DaySteps.Count + 1; x++)
             {
                 Data = new DataPoint(x, p.DaySteps[x - 1]);
                 ProcessFunction.Points.Add(Data);

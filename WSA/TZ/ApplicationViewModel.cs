@@ -21,13 +21,12 @@ namespace WSA
             get
             {
                 HandlingCommand = null;
-                return HandlingCommand ??
-                  (HandlingCommand = new RelayCommand(obj =>
+                return HandlingCommand ??= new RelayCommand(obj =>
                   {
                       ProcessingButton();
                       DataGrid.Items.Refresh();
-                      
-                  }));
+
+                  });
             }
         }
         public RelayCommand CommandSaveDataBtn
@@ -35,14 +34,13 @@ namespace WSA
             get
             {
                 HandlingCommand = null;
-                return HandlingCommand ??
-                  (HandlingCommand = new RelayCommand(obj =>
+                return HandlingCommand ??= new RelayCommand(obj =>
                   {
                       SaveDataButton();
-                  }));
+                  });
             }
         }
-       
+
         public Person SelectedPerson
         {
             get { return selectedPerson; }
@@ -54,19 +52,20 @@ namespace WSA
         }
         public ApplicationViewModel()
         {
-            
+
             DataModel = new DataModel();
             MyModel = DataModel.MyModel;
-            
+
         }
         public static void ColorRow(object sender, DataGridRowEventArgs e)
         {
             try
             {
+
                 Person Person = (Person)e.Row.DataContext;
                 double StepsBestPercent = (((double)Person.StepsBest - (double)Person.StepsAverage) / (double)Person.StepsAverage * 100);
                 double StepsWorstPercent = (((double)Person.StepsAverage - (double)Person.StepsWorst) / (double)Person.StepsAverage * 100);
-                if (StepsBestPercent> 20 || StepsWorstPercent > 20)
+                if (StepsBestPercent > 20 || StepsWorstPercent > 20)
                     e.Row.Background = new SolidColorBrush(Colors.BlueViolet);
                 else
                     e.Row.Background = new SolidColorBrush(Colors.White);
@@ -82,21 +81,20 @@ namespace WSA
             PersonModel = null;
 
             FilesProcessingModel filesProcessingModel = new FilesProcessingModel();
-            PersonModel= new PersonModel(filesProcessingModel.GetFiles());
-            Persons = PersonModel.HandlingData();
-            DataGrid.ItemsSource = Persons;
+            PersonModel = new PersonModel(filesProcessingModel.GetFiles());
+            DataGrid.ItemsSource = PersonModel.HandlingData();
         }
-        public void SaveDataButton()=>
+        public void SaveDataButton() =>
             SerializeData.SerializeJSON(SelectedPerson);
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-            if(SelectedPerson != null)
+            if (SelectedPerson is not null)
                 MyModel = DataModel.DataViewModel(SelectedPerson);
         }
         private static DataGrid DataGrid;
-        public static void RefreshDataGridView(ref DataGrid dataGrid)=>
+        public static void RefreshDataGridView(ref DataGrid dataGrid) =>
             DataGrid = dataGrid;
 
     }
-    
+
 }

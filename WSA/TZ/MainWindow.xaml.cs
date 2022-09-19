@@ -14,10 +14,10 @@ namespace WSA
             InitializeComponent();
             DataContext = new ApplicationViewModel();
         }
-        private void MyDataGrid_LoadingRow(object sender, DataGridRowEventArgs e)=>
-            ApplicationViewModel.ColorRow(sender,e);
+        private void MyDataGrid_LoadingRow(object sender, DataGridRowEventArgs e) =>
+            ApplicationViewModel.ColorRow(sender, e);
 
-        private void BtnOpenFile_Click(object sender, RoutedEventArgs e)=>
+        private void BtnOpenFile_Click(object sender, RoutedEventArgs e) =>
             ApplicationViewModel.RefreshDataGridView(ref DataGrid);
 
         private void BtnSaveData_Click(object sender, RoutedEventArgs e)

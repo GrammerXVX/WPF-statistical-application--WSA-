@@ -8,11 +8,11 @@ namespace WSA
     public class Person
     {
 
-        private int rank=0;
-        private string user="None";
+        private int rank = 0;
+        private string user = "None";
         private string status = "None";
-        private int steps=0;
-        public static int index =0;
+        private int steps = 0;
+        public static int index = 0;
         private List<int> daySteps;
         private int stepsBest = 0;
         private int stepsAverage = 0;
@@ -20,7 +20,7 @@ namespace WSA
         private int specSteps = 0;
         public Person() { daySteps = new List<int>(); }
 
-        public int Index { private get { return index; }set { index = value; } }
+        public int Index { private get { return index; } set { index = value; } }
         public List<int> DaySteps { get { return daySteps; } set { daySteps = value; } }
         public int Rank
         {
@@ -69,11 +69,11 @@ namespace WSA
             {
                 specSteps = value;
                 DaySteps.Add(value);
-                StepsBest=value;
-                StepsAverage= value;
-                StepsWorst= value;
+                StepsBest = value;
+                StepsAverage = value;
+                StepsWorst = value;
                 Index = index;
-                
+
             }
         }
 
@@ -105,16 +105,14 @@ namespace WSA
             {
                 if (value < stepsWorst && stepsWorst != 0)
                     stepsWorst = value;
-                else if(stepsWorst==0&&(DaySteps.Count==1))
+                else if (stepsWorst == 0 && (DaySteps.Count == 1))
                     stepsWorst = value;
                 OnPropertyChanged("StepsWorst");
             }
         }
         [field: NonSerialized]
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
+        public void OnPropertyChanged([CallerMemberName] string prop = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
     }
 }

@@ -35,12 +35,12 @@ namespace WSA
                     {
                         MessageBox.Show("Error desiarilize JSON file.");
                     }
-                    
+
                 return PersonDataProcessing;
             }
             else
                 return null;
-           
+
         }
     }
 }
